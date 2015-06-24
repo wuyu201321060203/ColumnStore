@@ -40,12 +40,10 @@ FIND_LIBRARY(MUDUO_NET_CPP11 libmuduo_net_cpp11.a /usr/lib /usr/local/lib
     ${MUDUO_DEBUG_PATH} ${MUDUO_RELEASE_PATH})
 FIND_LIBRARY(MUDUO_BASE_CPP11 libmuduo_base_cpp11.a /usr/lib /usr/local/lib
     ${MUDUO_DEBUG_PATH} ${MUDUO_RELEASE_PATH})
-#FIND_LIBRARY(MYSQLCLIENT mysqlclient /usr/lib /usr/local/lib)
+
 FIND_LIBRARY(GTEST gtest /home/gtest-1.7.0/build/)
-#FIND_LIBRARY(CRYPTO crypto /usr/lib /lib)
-#FIND_LIBRARY(OOzdb_LIBRARY OOzdb /usr/lib /usr/local/lib)
-#FIND_LIBRARY(XML_LIBRARY xml2 /usr/lib /usr/local/lib)
-#FIND_LIBRARY(BOOSTPO_LIBRARY NAMES boost_program_options)
+
+FIND_LIBRARY(COMMON common /home/common/lib)
 
 IF(NOT MUDUO_NET_CPP11)
     MESSAGE(FATAL_ERROR "lib muduo_net_cpp11 not found")
@@ -59,41 +57,17 @@ ELSE()
     MESSAGE(STATUS "lib muduo_base_cpp11 found ${MUDUO_BASE_CPP11}")
 ENDIF()
 
-#IF(NOT MYSQLCLIENT)
-#    MESSAGE(FATAL_ERROR "lib mysqlclient not found")
-#ELSE()
-#    MESSAGE(STATUS "lib mysqlclient found ${MYSQLCLIENT}")
-#ENDIF()
-
 IF(NOT GTEST)
     MESSAGE(FATAL_ERROR "lib gtest not found")
 ELSE()
     MESSAGE(STATUS "lib gtest found ${GTEST}")
 ENDIF()
 
-#IF(NOT CRYPTO)
-#    MESSAGE(FATAL_ERROR "lib crypto not found")
-#ELSE()
-#    MESSAGE(STATUS "lib crypto found ${CRYPTO}")
-#ENDIF()
-
-#IF(NOT BOOSTPO_LIBRARY)
-#    MESSAGE(FATAL_ERROR "lib boost_program_options not found")
-#ELSE()
-#    MESSAGE(STATUS "lib boost_program_options found ${BOOSTPO_LIBRARY}")
-#ENDIF()
-
-#IF(NOT OOzdb_LIBRARY)
-#    MESSAGE(FATAL_ERROR "lib OOzdb not found")
-#ELSE()
-#    MESSAGE(STATUS "lib OOzdb found ${OOzdb_LIBRARY}")
-#ENDIF()
-#
-#IF(NOT XML_LIBRARY)
-#    MESSAGE(FATAL_ERROR "lib xml2 not found")
-#ELSE()
-#    MESSAGE(STATUS "lib xml2 found ${XML_LIBRARY}")
-#ENDIF()
+IF(NOT GTEST)
+    MESSAGE(FATAL_ERROR "lib common not found")
+ELSE()
+    MESSAGE(STATUS "lib common found ${COMMON}")
+ENDIF()
 
 FIND_PACKAGE(Protobuf)
 

@@ -53,11 +53,11 @@ private:
             Uint64Vec rowKeyVec;
             Uint64Vec freqVec;
             std::vector<T> valueVec;
-            int retValue =  column.getRangeThreeVecByPos(0 , static_cast<uint64_t>(ret)
+            int retValue =  column.getRangeThreeVecByPos(0 , static_cast<uint64_t>(ret),
                                              rowKeyVec , freqVec , valueVec);
             if(retValue == RET_SUCCESS)
             {
-                rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+                rowKey = *( io::changeRetVal2Str(rowKeyVec) );
                 freq = *( io::changeRetVal2Str(freqVec) );
                 value = *( io::changeRetVal2Str(valueVec) );
             }
@@ -74,11 +74,11 @@ private:
         if(ret >= 0)
         {
             Uint64Vec rowKeyVec;
-            int retValue =  column.getRangeRowKeyByPos(0 , static_cast<uint64_t>ret,
+            int retValue =  column.getRangeRowKeyByPos(0 , static_cast<uint64_t>(ret),
                                                        rowKeyVec);
 
             if(retValue == RET_SUCCESS)
-                rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+                rowKey = *( io::changeRetVal2Str(rowKeyVec) );
             return retValue;
         }
         else

@@ -349,11 +349,6 @@ public:
         return m_base;
     }
 
-    vector<uint64_t> getrowKeyByPos(uint64_t pos)
-    {
-        return getRangerowKeyByPos(pos, pos);
-    }
-
     int getRowKeyByPosList(Uint64Vec const& posList , Uint64Vec& rowKey)
     {
         for(Uint64Vec::iterator i = posList.begin() ; i != posList.end() ; ++i)
@@ -421,9 +416,9 @@ public:
             uint64_t end;
             for(UINT i = floor ; i != ceiling ; ++i)
             {
-                value.push_back(m_dictionary->get(*i));
-                start = m_offset->get(*i);
-                end = m_offset->get(*i + 1);
+                value.push_back( m_dictionary->get(i) );
+                start = m_offset->get(i);
+                end = m_offset->get(i + 1);
                 freq.push_back(end - start);
                 for(UINT j = start ; j != end ; ++j)
                     rowKey.push_back( m_position->get(j) );

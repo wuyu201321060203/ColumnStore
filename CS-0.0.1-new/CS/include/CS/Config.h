@@ -21,9 +21,9 @@
 #include <protocol/MSG_DS_CS_UPDATE_DATA_SEND.pb.h>
 #include <protocol/MSG_PING_PONG.pb.h>
 #include <protocol/MSG_CS_DC_MEMORY_INFO_SEND.pb.h>
-
-#include <boost/weak_ptr.hpp>
-#include <muduo/net/TcpConnection.h>
+#include <protocol/MSG_QE_CS_DICTINDEX_VALUE.pb.h>
+#include <protocol/MSG_QE_CS_REQUEST_COLUMN.pb.h>
+#include <protocol/MSG_QE_CS_ROWKEY_DICTINDEX.pb.h>
 
 typedef unsigned int DB_ID_TYPE;
 typedef boost::shared_ptr<google::protobuf::Message> MessagePtr;
@@ -72,12 +72,12 @@ typedef boost::shared_ptr<std::string> StdStrPtr;
 #define MSG_CS_DC_MEMORY_INFO_SEND_CMD 0x42
 #define MSG_DC_CS_MEMORY_INFO_SEND_ACK_CMD 0x43
 
-#define MSG_QE_CS_REQUEST_COLUMN 0x50
-#define MSG_CS_QE_REQUEST_COLUMN_ACK 0x51
-#define MSG_QE_CS_DICTINDEX_VALUE 0x52
-#define MSG_CS_QE_DICTINDEX_VALUE_ACK 0x53
-#define MSG_QE_CS_ROWKEY_DICTINDEX 0x54
-#define MSG_CS_QE_ROWKEY_DICTINDEX_ACK 0x55
+#define MSG_QE_CS_REQUEST_COLUMN_CMD 0x50
+#define MSG_CS_QE_REQUEST_COLUMN_ACK_CMD 0x51
+#define MSG_QE_CS_DICTINDEX_VALUE_CMD 0x52
+#define MSG_CS_QE_DICTINDEX_VALUE_ACK_CMD 0x53
+#define MSG_QE_CS_ROWKEY_DICTINDEX_CMD 0x54
+#define MSG_CS_QE_ROWKEY_DICTINDEX_ACK_CMD 0x55
 
 enum class Choice
 {
@@ -162,7 +162,7 @@ typedef MSG_QE_CS_REQUEST_COLUMN ReqColByFilterMsg;
 typedef boost::shared_ptr<ReqColByFilterMsg> ReqColByFilterMsgPtr;
 
 typedef MSG_CS_QE_REQUEST_COLUMN_ACK ReqColByFilterAck;
-typedef boost::shared_ptr<ReqColByFilterMsgAck> ReqColByFilterAckPtr;
+typedef boost::shared_ptr<ReqColByFilterAck> ReqColByFilterAckPtr;
 
 typedef MSG_QE_CS_DICTINDEX_VALUE ReqColByDictIndexMsg;
 typedef boost::shared_ptr<ReqColByDictIndexMsg> ReqColByDictIndexMsgPtr;

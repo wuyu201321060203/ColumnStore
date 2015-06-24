@@ -58,7 +58,7 @@ private:
                                              rowKeyVec , freqVec , valueVec);
             if(retValue == RET_SUCCESS)
             {
-                rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+                rowKey = *( io::changeRetVal2Str(rowKeyVec) );
                 freq = *( io::changeRetVal2Str(freqVec) );
                 value = *( io::changeRetVal2Str(valueVec) );
             }
@@ -79,7 +79,7 @@ private:
                 ( column.getDictionary() )->getRows() , rowKeyVec);
 
             if(retValue == RET_SUCCESS)
-                rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+                rowKey = *( io::changeRetVal2Str(rowKeyVec) );
             return retValue;
         }
         else

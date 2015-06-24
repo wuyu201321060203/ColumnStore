@@ -5,6 +5,7 @@
 
 #include "Config.h"
 #include "DGroupKey.h"
+#include "Util.h"
 
 class BaseOperator
 {

@@ -60,7 +60,7 @@ private:
                                                     valueVec);
         if(ret == RET_SUCCESS)
         {
-            rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+            rowKey = *( io::changeRetVal2Str(rowKeyVec) );
             freq = *( io::changeRetVal2Str(freqVec) );
             value = *( io::changeRetVal2Str(valueVec) );
         }
@@ -75,7 +75,7 @@ private:
         Uint64Vec valueVec;
         int ret =  column.getRangeRowKeyByPos(0 , base , rowKeyVec);
         if(ret == RET_SUCCESS)
-            rowKey = *( io::changeRetVal2Str(rowkeyVec) );
+            rowKey = *( io::changeRetVal2Str(rowKeyVec) );
         return ret;
     }
 };

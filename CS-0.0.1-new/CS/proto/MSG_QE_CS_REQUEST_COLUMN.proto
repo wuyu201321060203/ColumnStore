@@ -6,10 +6,9 @@ message MSG_QE_CS_REQUEST_COLUMN
     message FILTER
     {
         required uint32 operator = 1;
-        required uint32 data_type = 2;
-        optional string str_data = 3;
-        optional int32 int_data = 4;
-        optional double double_data = 5;
+        optional string str_data = 2;
+        optional int32 int_data = 3;
+        optional double double_data = 4;
     }
     repeated FILTER filter = 4;
     required bool return_data_type = 5;

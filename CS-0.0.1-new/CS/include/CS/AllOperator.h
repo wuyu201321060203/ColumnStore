@@ -3,7 +3,7 @@
 
 #include "BaseOperator.h"
 
-class ALLOperator : public BaseOperator
+class AllOperator : public BaseOperator
 {
 public:
 
@@ -36,7 +36,7 @@ public:
         return queryImpl(base , column , rowKey);
     }
 
-    int query(double base , DGroupKey<double> const&  column , std::string& rowKey)
+    int query(double base , DGroupKey<double> const& column , std::string& rowKey)
     {
         return queryImpl(base , column , rowKey);
     }

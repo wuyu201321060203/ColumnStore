@@ -29,20 +29,20 @@ CS4QEService::CS4QEService(CSServer* server , std::string filePath):
         boost::bind(&CS4QEService::onQEQuery4IndexByRowkey , this , _1 , _2)
         );
 
-    ProtobufCodec::registeMsg(MSG_QE_CS_REQUEST_COLUMN,
+    ProtobufCodec::registeMsg(MSG_QE_CS_REQUEST_COLUMN_CMD,
         "MSG_QE_CS_REQUEST_COLUMN");
 
-    ProtobufCodec::registeMsg(MSG_CS_QE_REQUEST_COLUMN_ACK,
+    ProtobufCodec::registeMsg(MSG_CS_QE_REQUEST_COLUMN_ACK_CMD,
         "MSG_CS_QE_REQUEST_COLUMN_ACK");
 
-    ProtobufCodec::registeMsg(MSG_QE_CS_DICTINDEX_VALUE,
+    ProtobufCodec::registeMsg(MSG_QE_CS_DICTINDEX_VALUE_CMD,
         "MSG_QE_CS_DICTINDEX_VALUE");
 
-    ProtobufCodec::registeMsg(MSG_CS_QE_DICTINDEX_VALUE_ACK,
+    ProtobufCodec::registeMsg(MSG_CS_QE_DICTINDEX_VALUE_ACK_CMD,
         "MSG_CS_QE_DICTINDEX_VALUE_ACK");
-    ProtobufCodec::registeMsg(MSG_QE_CS_ROWKEY_DICTINDEX,
+    ProtobufCodec::registeMsg(MSG_QE_CS_ROWKEY_DICTINDEX_CMD,
         "MSG_QE_CS_ROWKEY_DICTINDEX");
-    ProtobufCodec::registeMsg(MSG_CS_QE_ROWKEY_DICTINDEX_ACK,
+    ProtobufCodec::registeMsg(MSG_CS_QE_ROWKEY_DICTINDEX_ACK_CMD,
         "MSG_CS_QE_ROWKEY_DICTINDEX_ACK");
 }
 
@@ -50,29 +50,6 @@ void CS4QEService::onQEQuery4ValueByFilter(uint32_t agentID , MessagePtr const& 
 {
     ReqColByFilterMsgPtr query = muduo::down_pointer_cast<ReqColByFilterMsg>(queryMsg);
     ReqColByFilterAck reply;
-        /*
-    uint32_t dbID = query->db_id();
-    string tableName = query->table_name();
-    string columnName = query->column_name();
-    bool returnDataType = query->return_data_type();
-    bool isLocal = query->is_local();
-    ReqColByFilterAck reply;
-    if( (_csserver->_dbID2TManager).find(dbID) == (_csserver->_dbID2TManager).end() )
-        reply.set_status_code(UNEXISTED_DATABASE);
-    else
-    {
-        TableManagerPtr tbManager = (_csserver->_dbID2TManager)[dbID];
-        ColumnTable* table = tbManager->getColumnTable(tableName);
-        if(NULL ==  table)
-            reply.set_status_code(UNEXISTED_TABLE);
-        else
-        {
-            if( -1 == table->getPos(columnName) )
-                reply.set_status_code(UNEXISTED_COL);
-            else
-            {
-                std::pair<void*, size_t> colObj = table->getOneDGroupKey(columnName);
-    */
     ColObjType colobj;
     if( RET_SUCCESS == parseCommonInfoOfQuery(query , reply , colobj) )
     {
@@ -96,7 +73,8 @@ void CS4QEService::onQEQuery4ValueByFilter(uint32_t agentID , MessagePtr const& 
                 {
                     cmd = ( query->filter(i) ).operator_();
                     base = ( query->filter(i) ).str_data();
-                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey , freq , value);
+                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey,
+                                              freq , value);
                 }
             }
             else
@@ -121,7 +99,8 @@ void CS4QEService::onQEQuery4ValueByFilter(uint32_t agentID , MessagePtr const& 
                 {
                     cmd = ( query->filter(i) ).operator_();
                     base = ( query->filter(i) ).int_data();
-                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey , freq , value);
+                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey,
+                                              freq , value);
                 }
             }
             else
@@ -146,7 +125,8 @@ void CS4QEService::onQEQuery4ValueByFilter(uint32_t agentID , MessagePtr const& 
                 {
                     cmd = ( query->filter(i) ).operator_();
                     base = ( query->filter(i) ).double_data();
-                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey , freq , value);
+                    _groupKeyQE->executequery(cmd , base , *groupKey , rowKey,
+                                              freq , value);
                 }
             }
             else
@@ -219,7 +199,8 @@ void CS4QEService::onQEQuery4ValueByIndex(uint32_t agentID,
             DGroupKey<string>* groupKey = static_cast<DGroupKey<string>*>(colObj.first);
             reply.set_value_type(GROUPKEY_STRING);
             if(returnDataType)
-                _groupKeyQE->executequery(*posList , *groupKey , rowKey , freq , value);
+                _groupKeyQE->executequery(*posList , *groupKey , rowKey , freq,
+                                          value);
             else
                 _groupKeyQE->executequery(*posList , *groupKey , rowKey);
 
@@ -229,7 +210,8 @@ void CS4QEService::onQEQuery4ValueByIndex(uint32_t agentID,
             DGroupKey<int>* groupKey = static_cast<DGroupKey<int>*>(colObj.first);
             reply.set_value_type(GROUPKEY_INT);
             if(returnDataType)
-                _groupKeyQE->executequery(*posList , *groupKey , rowKey , freq , value);
+                _groupKeyQE->executequery(*posList , *groupKey , rowKey , freq,
+                                          value);
             else
                 _groupKeyQE->executequery(*posList , *groupKey , rowKey);
         }
@@ -275,9 +257,10 @@ void CS4QEService::onQEQuery4ValueByIndex(uint32_t agentID,
 #endif
 }
 
-void CS4QEService::onQEQuery4IndexByRowkey(uint32_t agentID , MessagePtr const& queryMsg)
+void CS4QEService::onQEQuery4IndexByRowkey(uint32_t agentID,
+                                           MessagePtr const& queryMsg)
 {
-    ReqDictIndexMsgPtr query = muduo:;down_pointer_cast<ReqDictIndexMsg>(queryMsg);
+    ReqDictIndexMsgPtr query = muduo::down_pointer_cast<ReqDictIndexMsg>(queryMsg);
     ReqDictIndexAck reply;
     DRowTablePtr rowTable;
     bool isLocal = query->is_local();
