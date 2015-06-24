@@ -1,1 +1,1 @@
-A simple column-based storage engine for the in-memory database.
+A simple column-based storage engine for an In-Memory database.
