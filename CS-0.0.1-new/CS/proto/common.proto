@@ -1,0 +1,64 @@
+message SINGLE_NODE_INFO
+{
+    required uint32 nodeId = 1;
+    optional string nodeStatus = 2;
+    optional string nodeIp = 3;
+    optional uint32 nodePort = 4;
+    optional uint32 core = 5;
+    optional uint32 memSize = 6;
+}
+
+message COLUMN_INFO
+{
+    enum ColumnType
+    {
+        VARCHAR = 0;
+        INTTYPE = 1;
+        DOUBLETYPE = 2;
+        TEXT = 3;
+        BLOB = 4;
+        TIMESTAMP = 5;
+    };
+    required string columnName = 1;
+    required ColumnType columnType = 2;
+}
+
+message TB_INFO
+{
+    required string tbName = 1;
+    repeated COLUMN_INFO columnInfo = 2;
+    required uint32 rowNum = 3;
+    required uint32 tbSize = 4;
+}
+
+message DATABASE_INFO
+{
+    required string dbName = 1;
+    required int32 dbid = 2;
+    repeated TB_INFO tbInfo = 3;
+}
+
+message TASK_INFO
+{
+    required uint32 taskType = 1; 
+    required uint32 schedule = 2;
+}
+
+message GROUP_DB_INFO
+{
+    required string groupName = 1;
+    repeated uint32 dbid = 2;
+}
+
+message ROWKEY_ENTRY
+{
+    optional uint64 rowKey = 1;
+    required uint64 entry = 2;
+}
+
+message DICT_VALUE
+{
+    optional string strValue = 1;
+    optional int32 iValue = 2;
+    optional double dValue = 3;
+}

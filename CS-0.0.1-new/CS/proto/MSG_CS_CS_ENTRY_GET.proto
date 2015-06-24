@@ -1,0 +1,16 @@
+message MSG_CS_CS_ENTRY_GET
+{
+    optional uint32 dbID = 1;
+    optional string tableName = 2;
+    optional string columnName = 3;
+    repeated uint64 rowKeys = 4;
+}
+
+message MSG_CS_CS_ENTRY_GET_ACK
+{
+    optional int32 statusCode = 1;
+    optional uint32 dbID = 2;
+    optional string tableName = 3;
+    optional string columnName = 4;
+    repeated uint32 entryList = 5;
+}

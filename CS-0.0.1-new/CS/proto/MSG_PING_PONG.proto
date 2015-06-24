@@ -1,0 +1,7 @@
+message PING
+{
+}
+
+message PONG
+{
+}

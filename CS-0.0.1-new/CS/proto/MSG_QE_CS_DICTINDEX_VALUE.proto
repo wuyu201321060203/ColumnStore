@@ -1,0 +1,19 @@
+message MSG_QE_CS_DICTINDEX_VALUE
+{
+    required uint32 db_id = 1;
+    required string table_name = 2;
+    required string column_name = 3;
+    required string index_vec = 4;
+    required bool return_data_type = 5;
+    required bool is_local = 6;
+}
+
+message MSG_CS_QE_DICTINDEX_VALUE_ACK
+{
+    required int32 status_code = 1;
+    optional string row_key = 2;
+    optional string frequency = 3;
+    optional string value = 4;
+    optional uint32 shm_size = 5;
+    optional uint32 value_type = 6;
+}

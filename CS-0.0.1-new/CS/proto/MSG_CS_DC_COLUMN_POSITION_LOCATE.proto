@@ -1,0 +1,12 @@
+message MSG_CS_DC_COLUMN_POSITION_LOCATE
+{
+    optional uint32 dbID = 1;
+    optional string tableName = 2;
+    optional string columnName = 3;
+}
+
+message MSG_DC_CS_COLUMN_POSITION_LOCATE_ACK
+{
+    optional string csIP = 1;
+    optional int32 statusCode = 2;
+}

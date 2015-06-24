@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include "DGroupKey.h"
+#include "BitCompressedVector.h"
+#include "Dictionary.h"
+#include "IndexOffset.h"
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+    if(argc < 2)
+    {
+        cout <<" arg erorr" << endl;
+        return -1;
+    }
+    
+    size_t numberOfRows = static_cast<size_t>(atoi(argv[1]));
+    vector<size_t> cvector;
+    BitCompressedVector<size_t> myVector(numberOfRows);
+    
+    for(int i = 0; i < numberOfRows; i++)
+    {
+        cvector.push_back(i);
+        myVector.push_back(i);
+    }
+
+    for(int i = 0; i < numberOfRows; i++)
+    {
+        if(cvector[i] != myVector.get(i))
+            cout <<"wrong at: " << cvector[i] << endl;
+    }
+
+    cout << "==========" << endl;
+    cout << "cvecotr's size : " << cvector.size() * sizeof(size_t) * 8 << "bits" << endl;
+    cout << "myVector's size: " << myVector.getSize() << "bits" << endl;
+
+    cout << "=========" << endl;
+    
+    vector<size_t> result(myVector.getRange(5, 9));
+
+    for(size_t i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << endl;
+    }
+
+    return 0;
+}

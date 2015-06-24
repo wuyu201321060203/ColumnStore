@@ -1,0 +1,11 @@
+message MSG_CS_DC_RTABLE_POSITION_GET
+{
+    required uint32 dbID = 1;
+    required string tableName = 2;
+}
+
+message MSG_DC_CS_RTABLE_POSITION_GET_ACK
+{
+    optional string csIP = 1;
+    required int32 statusCode = 2;
+}

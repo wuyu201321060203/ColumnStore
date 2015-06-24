@@ -1,0 +1,2 @@
+How to build:
+    sudo INSTALL_DIR=/usr/local ./build.sh

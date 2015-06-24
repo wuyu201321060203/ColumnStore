@@ -1,0 +1,10 @@
+message MSG_CS_DC_MEMORY_INFO_SEND
+{
+    required uint32 memory = 1;
+    required uint32 port = 2;
+}
+
+message MSG_DC_CS_MEMORY_INFO_SEND_ACK
+{
+    required uint32 statusCode = 1;
+}

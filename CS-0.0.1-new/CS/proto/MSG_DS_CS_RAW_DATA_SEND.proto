@@ -1,0 +1,33 @@
+import "common.proto";
+
+message MSG_DS_CS_RAW_DATA_SEND     //the groupkey vectors of one column
+{
+    required uint32 taskID = 1;
+    required uint32 dbID = 2;
+    required string tableName = 3;
+    required string columnName = 4;
+    enum COL_TYPE
+    {
+        VARCHAR = 0;
+        INTTYPE = 1;
+        DOUBLETYPE = 2;
+        TEXT = 3;
+        BLOB = 4;
+        TIMESTAMP = 5;
+    }
+    required COL_TYPE columnType = 5;
+    repeated DICT_VALUE dicValue = 6;
+    repeated uint32 indexOffsets = 7;
+    repeated uint32 indexPosting = 8;
+    optional uint32 sliceNo = 9;        //子表序号
+    optional uint32 sliceNum = 10;       //子表个数
+}
+
+message MSG_CS_DS_RAW_DATA_SEND_ACK
+{
+    required uint32 taskID = 1;
+    required int32 statusCode = 2;
+    required string columnName = 3;
+}
+
+

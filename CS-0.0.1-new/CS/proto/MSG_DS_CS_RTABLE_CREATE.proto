@@ -1,0 +1,19 @@
+message MSG_DS_CS_RTABLE_CREATE
+{
+    optional uint32 taskID = 1;
+    optional uint32 dbID = 2;
+    optional string tableName = 3;
+    optional uint32 attributeCount = 4;
+    message SINGLE_COLUMN_RTABLE
+    {
+        optional string columnName = 1;
+        repeated uint64 entryList = 2;
+    }
+    repeated SINGLE_COLUMN_RTABLE columnRTables = 5;
+}
+
+message MSG_CS_DS_RTABLE_CREATE_ACK
+{
+    optional int32 statusCode = 1;
+    optional uint32 taskID = 2;
+}

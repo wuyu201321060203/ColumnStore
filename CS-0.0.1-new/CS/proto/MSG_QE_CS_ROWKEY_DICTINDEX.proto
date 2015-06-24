@@ -1,0 +1,15 @@
+message MSG_QE_CS_ROWKEY_DICTINDEX
+{
+    required uint32 db_id = 1;
+    required string tablename = 2;
+    required string columnname = 3;
+    required string rowkeys = 4;
+    required bool is_local = 5;
+}
+
+message MSG_CS_QE_ROWKEY_DICTINDEX_ACK
+{
+    required int32 status_code = 1;
+    optional string dict_index = 2;
+    optional uint32 shm_size = 3;
+}

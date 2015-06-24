@@ -1,0 +1,27 @@
+import "common.proto";
+
+message MSG_CS_CS_VALUE_GET
+{
+    optional uint32 dbID = 1;
+    optional string tableName = 2;
+    optional string columnName = 3;
+    repeated uint32 entryList = 4;
+}
+
+message MSG_CS_CS_VALUE_GET_ACK
+{
+    optional int32 statusCode = 1;
+    optional uint32 dbID = 2;
+    optional string tableName = 3;
+    optional string columnName = 4;
+    enum COL_TYPE
+    {
+        VARCHAR = 0;
+        INTTYPE = 1;
+        DOUBLETYPE = 2;
+        TEXT = 3;
+        BLOB = 4;
+        TIMESTAMP = 5;
+    }
+    repeated DICT_VALUE dicValue = 5;
+}

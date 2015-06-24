@@ -1,0 +1,32 @@
+import "common.proto";
+
+message INDEX_BORDER
+{
+    enum DICT_TYPE
+    {
+        VARCHAR = 0;
+        INTTYPE = 1;
+        DOUBLETYPE = 2;
+        TEXT = 3;
+        BLOB = 4;
+        TIMESTAMP = 5;
+    }
+    required DICT_TYPE dictType = 1;
+    required DICT_VALUE dictUpper = 2;
+    required DICT_VALUE dictLower = 3;
+    required uint32 entryUpper = 4;
+    required uint32 entryLower = 5;
+}
+
+message MSG_CS_DC_LOCATION_INDEX_SEND
+{
+	required uint32 dbID = 1;
+    required string tableName = 2;
+    required string columnName = 3;
+    required INDEX_BORDER colIndexBorder = 4;
+}
+
+message MSG_DC_CS_LOCATION_INDEX_SEND_ACK
+{
+    required int32 statusCode = 1;
+}

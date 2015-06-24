@@ -1,0 +1,11 @@
+import "common.proto";
+
+message MSG_DC_CS_SYSTEM_STATUS_GET
+{
+}
+
+message MSG_CS_DC_SYSTEM_STATUS_GET_ACK
+{
+    required int32 statusCode = 1;
+    required SINGLE_NODE_INFO nodeSysInfo = 2;
+}

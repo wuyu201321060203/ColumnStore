@@ -1,0 +1,27 @@
+message MSG_QE_CS_REQUEST_COLUMN
+{
+    required uint32 db_id = 1;
+    required string table_name = 2;
+    required string column_name = 3;
+    message FILTER
+    {
+        required uint32 operator = 1;
+        required uint32 data_type = 2;
+        optional string str_data = 3;
+        optional int32 int_data = 4;
+        optional double double_data = 5;
+    }
+    repeated FILTER filter = 4;
+    required bool return_data_type = 5;
+    required bool is_local = 6;
+}
+
+message MSG_CS_QE_REQUEST_COLUMN_ACK
+{
+    required int32 status_code = 1;
+    optional string row_key = 2; //rowkey,frequency and value are sperated by\r\n, while value are by \t
+    optional string frequency = 3;
+    optional string value = 4;
+    optional uint32 shm_size = 5;
+    optional uint32 value_type = 6;
+}
