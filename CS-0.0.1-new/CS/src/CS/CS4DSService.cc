@@ -2,6 +2,8 @@
 #include <sys/sysinfo.h>
 #include <cassert>
 
+#include <muduo/net/Callbacks.h>
+
 #include <common/comm/AgentManager.h>
 
 #include <boost/lexical_cast.hpp>
@@ -248,8 +250,8 @@ void CS4DSService::doCreateGroupKeyData(uint32_t agentID,
     {
 #ifndef CSTEST
         if( AgentManager::getInstance()
-                                ->find(   ) )
-            Initializer::getCodec().send(_server->getCS4DCAgent()->getID(),
+                                ->find( _server->getCS4DCAgent()->getID() ) )
+            Initializer::getCodec().send( _server->getCS4DCAgent()->getID(),
                                          reply4DC);//TODO
         {
             MutexLockGuard tmpLock(g_Lock);

@@ -11,12 +11,12 @@
 #include "TableManager.h"
 #include "DRowTable.h"
 #include "ProtobufCodec.h"
-#include "CS4QEService.h"
 
 typedef boost::shared_ptr<TableManager> TableManagerPtr;
 typedef boost::shared_ptr<DRowTable> DRowTablePtr;
 
 class CSServer;
+class CS4QEService;
 
 class CS4DSService
 {

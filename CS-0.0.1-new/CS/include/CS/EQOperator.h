@@ -54,7 +54,7 @@ private:
         if(ret >= 0)
         {
             Uint64Vec posList(1 , static_cast<uint64_t>(ret) );
-            column.getThreeVecByPosList(posList , rowkeyVec , freqVec , valueVec);
+            column.getThreeVecByPos(posList , rowkeyVec , freqVec , valueVec);
             rowKey = *( io::changeRetVal2Str(rowkeyVec) );
             freq = *( io::changeRetVal2Str(freqVec) );
             value = *( io::changeRetVal2Str(valueVec) );
@@ -72,7 +72,7 @@ private:
         if(ret >= 0)
         {
             Uint64Vec posList(1 , static_cast<uint64_t>(ret) );
-            column.getRowKeyByPosList(posList , rowkeyVec);
+            column.getRowKeyByPos(posList , rowkeyVec);
             rowKey = *( io::changeRetVal2Str(rowkeyVec) );
             return RET_SUCCESS;
         }

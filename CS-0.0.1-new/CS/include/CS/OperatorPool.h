@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include <boost/shared_ptr.hpp>
+
 #include "BaseOperator.h"
 
 class OperatorPool
@@ -17,5 +19,7 @@ private:
 
     OperatorVec _opVec;
 };
+
+typedef boost::shared_ptr<OperatorPool> OperatorPoolPtr;
 
 #endif

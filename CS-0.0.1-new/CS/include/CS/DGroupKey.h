@@ -323,9 +323,9 @@ public:
 
     }
 
-    Dictionary<T>* getDictionary(){return m_dictionary;}
-    IndexOffset* getOffset(){return m_offset;}
-    BitCompressedVector* getPosition(){return m_position;}
+    Dictionary<T>* getDictionary() const {return m_dictionary;}
+    IndexOffset* getOffset() const {return m_offset;}
+    BitCompressedVector* getPosition() const{return m_position;}
 
     void print()
     {
@@ -349,11 +349,11 @@ public:
         return m_base;
     }
 
-    int getRowKeyByPosList(Uint64Vec const& posList , Uint64Vec& rowKey)
+    int getRowKeyByPos(Uint64Vec const& posList , Uint64Vec& rowKey) const
     {
-        for(Uint64Vec::iterator i = posList.begin() ; i != posList.end() ; ++i)
+        for(Uint64Vec::const_iterator i = posList.begin() ; i != posList.end() ; ++i)
         {
-            if( *i <= m_dictionary->getRows() && *i >= 0 )
+            if( *i <= m_dictionary->getRows() )
             {
                 for(UINT j = m_offset->get(*i) ; j != m_offset->get(*i + 1) ; ++j)
                     rowKey.push_back( m_position->get(j) );
@@ -364,9 +364,9 @@ public:
         return RET_SUCCESS;
     }
 
-    int getRangeRowKeyByPos(uint64_t floor, uint64_t ceiling , Uint64Vec& rowKey)
+    int getRangeRowKeyByPos(uint64_t floor, uint64_t ceiling , Uint64Vec& rowKey) const
     {
-        if( ceiling >= floor && floor >= 0 && ceiling <= m_dictionary->getRows() )
+        if( ceiling >= floor && ceiling <= m_dictionary->getRows() )
         {
             uint64_t offsetFloorPos = m_offset->get(floor);
             uint64_t offsetCeilingPos = m_offset->get(ceiling);
@@ -380,19 +380,19 @@ public:
             return RET_FAIL;
     }
 
-    int getAllRowKey(Uint64Vec& rowKey)
+    int getAllRowKey(Uint64Vec& rowKey) const
     {
         return getRangeRowKeyByPos(0 , m_dictionary->getRows() , rowKey);
     }
 
-    int getThreeVecByPosList(Uint64Vec const& posList , Uint64Vec& rowKey,
-                             Uint64Vec& freq , vector<T>& value)
+    int getThreeVecByPos(Uint64Vec const& posList , Uint64Vec& rowKey,
+                             Uint64Vec& freq , vector<T>& value) const
     {
         uint64_t floor;
         uint64_t ceiling;
-        for(Uint64Vec::iterator i = posList.begin() ; i != posList.end() ; ++i)
+        for(Uint64Vec::const_iterator i = posList.begin() ; i != posList.end() ; ++i)
         {
-            if( *i <= m_dictionary->getRows() && *i >= 0 )
+            if( *i <= m_dictionary->getRows() )
             {
                 value.push_back(m_dictionary->get(*i));
                 floor = m_offset->get(*i);
@@ -408,9 +408,9 @@ public:
     }
 
     int getRangeThreeVecByPos(uint64_t floor , uint64_t ceiling , Uint64Vec& rowKey,
-                              Uint64Vec& freq , vector<T>& value)
+                              Uint64Vec& freq , vector<T>& value) const
     {
-        if( ceiling >= floor && floor >= 0 && ceiling <= m_dictionary->getRows() )
+        if( ceiling >= floor && ceiling <= m_dictionary->getRows() )
         {
             uint64_t start;
             uint64_t end;
@@ -430,7 +430,7 @@ public:
     }
 
     int getAllThreeVec(Uint64Vec& rowKey , Uint64Vec& freq,
-                       vector<T>& value)
+                       vector<T>& value) const
     {
         return getRangeThreeVecByPos(0 , m_dictionary->getRows() , rowKey , freq,
                                      value);

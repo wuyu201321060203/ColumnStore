@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include <boost/shared_ptr.hpp>
+
 #include "Config.h"
 
 class ShMemManager
@@ -25,5 +27,7 @@ private:
     std::string _filePath;
     std::string _separator;
 };
+
+typedef boost::shared_ptr<ShMemManager> ShMemManagerPtr;
 
 #endif

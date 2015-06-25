@@ -96,27 +96,27 @@ class MSG_QE_CS_ROWKEY_DICTINDEX : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 db_id() const;
   inline void set_db_id(::google::protobuf::uint32 value);
   
-  // required string tablename = 2;
-  inline bool has_tablename() const;
-  inline void clear_tablename();
-  static const int kTablenameFieldNumber = 2;
-  inline const ::std::string& tablename() const;
-  inline void set_tablename(const ::std::string& value);
-  inline void set_tablename(const char* value);
-  inline void set_tablename(const char* value, size_t size);
-  inline ::std::string* mutable_tablename();
-  inline ::std::string* release_tablename();
+  // required string table_name = 2;
+  inline bool has_table_name() const;
+  inline void clear_table_name();
+  static const int kTableNameFieldNumber = 2;
+  inline const ::std::string& table_name() const;
+  inline void set_table_name(const ::std::string& value);
+  inline void set_table_name(const char* value);
+  inline void set_table_name(const char* value, size_t size);
+  inline ::std::string* mutable_table_name();
+  inline ::std::string* release_table_name();
   
-  // required string columnname = 3;
-  inline bool has_columnname() const;
-  inline void clear_columnname();
-  static const int kColumnnameFieldNumber = 3;
-  inline const ::std::string& columnname() const;
-  inline void set_columnname(const ::std::string& value);
-  inline void set_columnname(const char* value);
-  inline void set_columnname(const char* value, size_t size);
-  inline ::std::string* mutable_columnname();
-  inline ::std::string* release_columnname();
+  // required string column_name = 3;
+  inline bool has_column_name() const;
+  inline void clear_column_name();
+  static const int kColumnNameFieldNumber = 3;
+  inline const ::std::string& column_name() const;
+  inline void set_column_name(const ::std::string& value);
+  inline void set_column_name(const char* value);
+  inline void set_column_name(const char* value, size_t size);
+  inline ::std::string* mutable_column_name();
+  inline ::std::string* release_column_name();
   
   // required string rowkeys = 4;
   inline bool has_rowkeys() const;
@@ -140,10 +140,10 @@ class MSG_QE_CS_ROWKEY_DICTINDEX : public ::google::protobuf::Message {
  private:
   inline void set_has_db_id();
   inline void clear_has_db_id();
-  inline void set_has_tablename();
-  inline void clear_has_tablename();
-  inline void set_has_columnname();
-  inline void clear_has_columnname();
+  inline void set_has_table_name();
+  inline void clear_has_table_name();
+  inline void set_has_column_name();
+  inline void clear_has_column_name();
   inline void set_has_rowkeys();
   inline void clear_has_rowkeys();
   inline void set_has_is_local();
@@ -151,8 +151,8 @@ class MSG_QE_CS_ROWKEY_DICTINDEX : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::std::string* tablename_;
-  ::std::string* columnname_;
+  ::std::string* table_name_;
+  ::std::string* column_name_;
   ::google::protobuf::uint32 db_id_;
   bool is_local_;
   ::std::string* rowkeys_;
@@ -302,118 +302,118 @@ inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_db_id(::google::protobuf::uint32 val
   db_id_ = value;
 }
 
-// required string tablename = 2;
-inline bool MSG_QE_CS_ROWKEY_DICTINDEX::has_tablename() const {
+// required string table_name = 2;
+inline bool MSG_QE_CS_ROWKEY_DICTINDEX::has_table_name() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_has_tablename() {
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_has_table_name() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_has_tablename() {
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_has_table_name() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_tablename() {
-  if (tablename_ != &::google::protobuf::internal::kEmptyString) {
-    tablename_->clear();
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_table_name() {
+  if (table_name_ != &::google::protobuf::internal::kEmptyString) {
+    table_name_->clear();
   }
-  clear_has_tablename();
+  clear_has_table_name();
 }
-inline const ::std::string& MSG_QE_CS_ROWKEY_DICTINDEX::tablename() const {
-  return *tablename_;
+inline const ::std::string& MSG_QE_CS_ROWKEY_DICTINDEX::table_name() const {
+  return *table_name_;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_tablename(const ::std::string& value) {
-  set_has_tablename();
-  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
-    tablename_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_table_name(const ::std::string& value) {
+  set_has_table_name();
+  if (table_name_ == &::google::protobuf::internal::kEmptyString) {
+    table_name_ = new ::std::string;
   }
-  tablename_->assign(value);
+  table_name_->assign(value);
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_tablename(const char* value) {
-  set_has_tablename();
-  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
-    tablename_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_table_name(const char* value) {
+  set_has_table_name();
+  if (table_name_ == &::google::protobuf::internal::kEmptyString) {
+    table_name_ = new ::std::string;
   }
-  tablename_->assign(value);
+  table_name_->assign(value);
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_tablename(const char* value, size_t size) {
-  set_has_tablename();
-  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
-    tablename_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_table_name(const char* value, size_t size) {
+  set_has_table_name();
+  if (table_name_ == &::google::protobuf::internal::kEmptyString) {
+    table_name_ = new ::std::string;
   }
-  tablename_->assign(reinterpret_cast<const char*>(value), size);
+  table_name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::mutable_tablename() {
-  set_has_tablename();
-  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
-    tablename_ = new ::std::string;
+inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::mutable_table_name() {
+  set_has_table_name();
+  if (table_name_ == &::google::protobuf::internal::kEmptyString) {
+    table_name_ = new ::std::string;
   }
-  return tablename_;
+  return table_name_;
 }
-inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::release_tablename() {
-  clear_has_tablename();
-  if (tablename_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::release_table_name() {
+  clear_has_table_name();
+  if (table_name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = tablename_;
-    tablename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = table_name_;
+    table_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
 
-// required string columnname = 3;
-inline bool MSG_QE_CS_ROWKEY_DICTINDEX::has_columnname() const {
+// required string column_name = 3;
+inline bool MSG_QE_CS_ROWKEY_DICTINDEX::has_column_name() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_has_columnname() {
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_has_column_name() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_has_columnname() {
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_has_column_name() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_columnname() {
-  if (columnname_ != &::google::protobuf::internal::kEmptyString) {
-    columnname_->clear();
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::clear_column_name() {
+  if (column_name_ != &::google::protobuf::internal::kEmptyString) {
+    column_name_->clear();
   }
-  clear_has_columnname();
+  clear_has_column_name();
 }
-inline const ::std::string& MSG_QE_CS_ROWKEY_DICTINDEX::columnname() const {
-  return *columnname_;
+inline const ::std::string& MSG_QE_CS_ROWKEY_DICTINDEX::column_name() const {
+  return *column_name_;
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_columnname(const ::std::string& value) {
-  set_has_columnname();
-  if (columnname_ == &::google::protobuf::internal::kEmptyString) {
-    columnname_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_column_name(const ::std::string& value) {
+  set_has_column_name();
+  if (column_name_ == &::google::protobuf::internal::kEmptyString) {
+    column_name_ = new ::std::string;
   }
-  columnname_->assign(value);
+  column_name_->assign(value);
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_columnname(const char* value) {
-  set_has_columnname();
-  if (columnname_ == &::google::protobuf::internal::kEmptyString) {
-    columnname_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_column_name(const char* value) {
+  set_has_column_name();
+  if (column_name_ == &::google::protobuf::internal::kEmptyString) {
+    column_name_ = new ::std::string;
   }
-  columnname_->assign(value);
+  column_name_->assign(value);
 }
-inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_columnname(const char* value, size_t size) {
-  set_has_columnname();
-  if (columnname_ == &::google::protobuf::internal::kEmptyString) {
-    columnname_ = new ::std::string;
+inline void MSG_QE_CS_ROWKEY_DICTINDEX::set_column_name(const char* value, size_t size) {
+  set_has_column_name();
+  if (column_name_ == &::google::protobuf::internal::kEmptyString) {
+    column_name_ = new ::std::string;
   }
-  columnname_->assign(reinterpret_cast<const char*>(value), size);
+  column_name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::mutable_columnname() {
-  set_has_columnname();
-  if (columnname_ == &::google::protobuf::internal::kEmptyString) {
-    columnname_ = new ::std::string;
+inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::mutable_column_name() {
+  set_has_column_name();
+  if (column_name_ == &::google::protobuf::internal::kEmptyString) {
+    column_name_ = new ::std::string;
   }
-  return columnname_;
+  return column_name_;
 }
-inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::release_columnname() {
-  clear_has_columnname();
-  if (columnname_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* MSG_QE_CS_ROWKEY_DICTINDEX::release_column_name() {
+  clear_has_column_name();
+  if (column_name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = columnname_;
-    columnname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = column_name_;
+    column_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }

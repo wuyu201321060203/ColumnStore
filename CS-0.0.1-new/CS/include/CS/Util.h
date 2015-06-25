@@ -12,7 +12,7 @@ namespace io
     StdStrPtr changeRetVal2Str(std::vector<uint64_t> const& input);
     StdStrPtr changeRetVal2Str(std::vector<std::string> const& input);
     StdStrPtr changeRetVal2Str(std::vector<double> const& input);
-    Uint64VecPtr parse(string const& input);
+    Uint64VecPtr parseStr(std::string const& input);
 }
 
 #endif

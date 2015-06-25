@@ -55,6 +55,7 @@ typedef boost::shared_ptr<std::string> StdStrPtr;
 #define UNEXISTED_DATABASE -40
 #define UNEXISTED_TABLE -41
 #define UNEXISTED_COL -42
+#define SHM_FAILED -43
 
 #define MSG_DS_CS_RAW_DATA_SEND_CMD 0x1c
 #define MSG_CS_DS_RAW_DATA_SEND_ACK_CMD 0x1d

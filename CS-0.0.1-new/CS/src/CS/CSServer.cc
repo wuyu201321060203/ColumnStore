@@ -1,13 +1,16 @@
 #include <common/comm/AgentManager.h>
 
+#include <CS/Config.h>
 #include <CS/CSServer.h>
 #include <CS/CS4DCAgent.h>
 #include <CS/Initializer.h>
-#include <CS/Config.h>
+#include <CS/CS4DCService.h>
+#include <CS/CS4DSService.h>
+#include <CS/CS4QEService.h>
 
-CSServer::CSServer():_service4DC(this),
-                     _server4DS(this),
-                     _server4QE(this , SHM_PATH),
+CSServer::CSServer():_service4DC( new CS4DCService(this) ),
+                     _service4DS( new CS4DSService(this) ),
+                     _service4QE( new CS4QEService(this , SHM_PATH) ),
     _acceptor4DS( (AgentManager::getInstance())->createAgent<TCPListenAgent<CS4DSAgent> >(
         SocketAddress(Initializer::getSelfIP().c_str(),
                       (unsigned short)Initializer::getDSPort())

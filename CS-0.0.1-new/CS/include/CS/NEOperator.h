@@ -64,7 +64,7 @@ private:
                 if( i !=  static_cast<uint64_t>(ret) )
                     posList.push_back(i);
             }
-            column.getThreeVecByPosList(posList , rowkeyVec , freqVec , valueVec);
+            column.getThreeVecByPos(posList , rowkeyVec , freqVec , valueVec);
             rowKey = *( io::changeRetVal2Str(rowkeyVec) );
             freq = *( io::changeRetVal2Str(freqVec) );
             value = *( io::changeRetVal2Str(valueVec) );
@@ -89,7 +89,7 @@ private:
                 if( i != static_cast<uint64_t>(ret) )
                     posList.push_back(i);
             }
-            column.getRowKeyByPosList(posList , rowkeyVec);
+            column.getRowKeyByPos(posList , rowkeyVec);
             rowKey = *( io::changeRetVal2Str(rowkeyVec) );
             return RET_SUCCESS;
         }

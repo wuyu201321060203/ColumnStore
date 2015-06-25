@@ -1,14 +1,20 @@
 #ifndef CSSERVER_H
 #define CSSERVER_H
 
+#include <boost/shared_ptr.hpp>
+
 #include <common/comm/TCPListenAgent.h>
 #include "CS4DSAgent.h"
 #include "CS4QEAgent.h"
-#include "CS4DCService.h"
-#include "CS4DSService.h"
-#include "CS4QEService.h"
 
 class CS4DCAgent;
+class CS4DCService;
+class CS4DSService;
+class CS4QEService;
+
+typedef boost::shared_ptr<CS4DCService> CS4DCServicePtr;
+typedef boost::shared_ptr<CS4DSService> CS4DSServicePtr;
+typedef boost::shared_ptr<CS4QEService> CS4QEServicePtr;
 
 class CSServer
 {
@@ -22,9 +28,9 @@ public:
         return _connector4DC;
     }
 
-    CS4DSService* getDataStorageService()
+    CS4DSServicePtr getDataStorageService()
     {
-        return &_service4QE;
+        return _service4DS;
     }
 
 private:
@@ -33,9 +39,9 @@ private:
     friend class CS4DSService;
     friend class CS4QEService;
 
-    CS4DCService _service4DC;
-    CS4DSService _service4DS;
-    CS4QEService _service4QE;
+    CS4DCServicePtr _service4DC;
+    CS4DSServicePtr _service4DS;
+    CS4QEServicePtr _service4QE;
 
     TCPListenAgent<CS4DSAgent>* _acceptor4DS;
     TCPListenAgent<CS4QEAgent>* _acceptor4QE;

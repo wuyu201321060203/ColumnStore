@@ -2,6 +2,7 @@
 #define TOPOPERATOR_H
 
 #include <string>
+#include <vector>
 
 #include <boost/lexical_cast.hpp>
 
@@ -55,7 +56,7 @@ private:
     {
         Uint64Vec rowKeyVec;
         Uint64Vec freqVec;
-        Uint64Vec valueVec;
+        std::vector<T> valueVec;
         int ret =  column.getRangeThreeVecByPos(0 , base , rowKeyVec , freqVec,
                                                     valueVec);
         if(ret == RET_SUCCESS)
@@ -71,8 +72,6 @@ private:
     int queryImpl(double base , DGroupKey<T> const& column , std::string& rowKey)
     {
         Uint64Vec rowKeyVec;
-        Uint64Vec freqVec;
-        Uint64Vec valueVec;
         int ret =  column.getRangeRowKeyByPos(0 , base , rowKeyVec);
         if(ret == RET_SUCCESS)
             rowKey = *( io::changeRetVal2Str(rowKeyVec) );

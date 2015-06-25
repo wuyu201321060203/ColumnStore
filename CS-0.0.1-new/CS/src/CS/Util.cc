@@ -1,3 +1,5 @@
+#include <boost/lexical_cast.hpp>
+
 #include <CS/Util.h>
 
 using std::string;
@@ -23,7 +25,8 @@ StdStrPtr io::changeRetVal2Str(std::vector<uint64_t> const& input)
 StdStrPtr io::changeRetVal2Str(std::vector<std::string> const& input)
 {
     string ret;
-    fot(UINT i = 0 ; i != input.size() - 1 ; ++i)
+    UINT i = 0;
+    for(; i != input.size() - 1 ; ++i)
         ret += (input[i] + "\t");
     ret += input[i];
     return StdStrPtr(new string(ret));
@@ -38,7 +41,7 @@ StdStrPtr io::changeRetVal2Str(std::vector<double> const& input)
     return StdStrPtr( new string(inputStr) );
 }
 
-Uint64VecPtr io::parse(string const& input)
+Uint64VecPtr io::parseStr(string const& input)
 {
     UINT elementNum = input.size()/sizeof(uint64_t);
     Uint64VecPtr vec(new std::vector<uint64_t>);

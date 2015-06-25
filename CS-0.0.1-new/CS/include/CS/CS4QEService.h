@@ -5,12 +5,14 @@
 #include <vector>
 #include <utility>
 
-#include <boost/lexical.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include "Config.h"
 #include "GroupKeyQueryEngineProxy.h"
 #include "ShMemManager.h"
 #include "CS4DSService.h"
+#include "CSServer.h"
 
 class CS4QEService
 {
@@ -27,13 +29,13 @@ private:
     typedef std::pair<void* , size_t> ColObjType;
 
     template<typename T , typename U , typename V>
-    static int parseCommonInfoOfQuery(T const& query , U const& reply , V& colobj)
+    int parseCommonInfoOfQuery(T const& query , U& reply , V& colobj)
     {
         int ret = RET_FAIL;
         uint32_t dbID = query->db_id();
         std::string tableName = query->table_name();
         std::string columnName = query->column_name();
-        CS4DSService* dataStorageService = _csserver->getDataStorageService();
+        CS4DSServicePtr dataStorageService = _csserver->getDataStorageService();
         if( (dataStorageService->_dbID2TManager).find(dbID)
                                     == dataStorageService->_dbID2TManager.end() )
             reply.set_status_code(UNEXISTED_DATABASE);
@@ -57,16 +59,16 @@ private:
         return ret;
     }
 
-    static int parseCommonInfoOfQuery(ReqDictIndexMsgPtr const& query,
-                                      ReqDictIndexAck const& reply,
+    int parseCommonInfoOfQuery(ReqDictIndexMsgPtr const& query,
+                                      ReqDictIndexAck& reply,
                                       DRowTablePtr& obj)
     {
         int ret = RET_FAIL;
         uint32_t dbID = query->db_id();
         std::string tableName = query->table_name();
         std::string columnName = query->column_name();
-        std::string key = boost::lexical<std::string>(dbID) + tableName;
-        CS4DSService* dataStorageService = _csserver->getDataStorageService();
+        std::string key = boost::lexical_cast<std::string>(dbID) + tableName;
+        CS4DSServicePtr dataStorageService = _csserver->getDataStorageService();
         if( (dataStorageService->_dbID2RTable).find(key) ==
                                         (dataStorageService->_dbID2RTable).end() )
             reply.set_status_code(NO_RTABLE_OF_THIS_TABLE);
@@ -87,7 +89,7 @@ private:
 
 private:
 
-    CSServer* _csserverPtr;
+    CSServer* _csserver;
     GroupKeyQueryEngineProxyPtr _groupKeyQE;
     ShMemManagerPtr _shMemManager;
 };

@@ -1,8 +1,8 @@
 message MSG_QE_CS_ROWKEY_DICTINDEX
 {
     required uint32 db_id = 1;
-    required string tablename = 2;
-    required string columnname = 3;
+    required string table_name = 2;
+    required string column_name = 3;
     required string rowkeys = 4;
     required bool is_local = 5;
 }

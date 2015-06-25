@@ -8,6 +8,7 @@ INCLUDE_DIRECTORIES(${MUDUO_INCLUDE_PATH})
 INCLUDE_DIRECTORIES(/home/muduo-0.9.7/)
 INCLUDE_DIRECTORIES(${CS_INCLUDE_PATH})
 INCLUDE_DIRECTORIES(/usr/include/libxml2/)
+INCLUDE_DIRECTORIES(/usr/local/include/libxml2/)
 INCLUDE_DIRECTORIES(/home/common/include)
 
 LINK_DIRECTORIES(/home/build/debug-install/lib)
